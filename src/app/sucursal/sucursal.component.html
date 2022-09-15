@@ -1,0 +1,72 @@
+<p>SUCURSALES!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Inicio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/cliente">Clientes <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/sucursal">Sucursales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/server">Servers</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    </form>
+  </div>
+</nav>
+<div>
+  <h1>Crear Sucursal</h1>
+  <div class="btn-group">
+    <input [(ngModel)]="direccion" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="Direccion">&nbsp;
+    <input [(ngModel)]="suc_user" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="Sucursal Usuario">&nbsp;
+      <input [(ngModel)]="suc_pass" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="Sucursal Password">&nbsp;
+    <button (click)="crearSucursal()" type="button" class="btn btn-primary">
+      Ingresar <span class="caret"></span>
+    </button>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div id="demo" class="collapse">
+    <input [(ngModel)]="direccion" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Dirección">
+    <input [(ngModel)]="suc_user" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Usuario">
+    <input [(ngModel)]="suc_pass" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Contraseña">    
+    <button (click)="actualizarSucursal()" type="button" class="btn btn-primary">
+      Actualizar <span class="caret"></span>
+      <br />
+    </button>
+  </div>
+</div>
+<br>
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>ID SUCURSALES</th>
+      <th>DIRECCION</th>
+      <th>SUCURSAL USUARIO</th>
+      <th>SUCURSAL PASSWORD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sucursal of sucursales">
+      <td>{{sucursal.id_sucursal}}</td>
+      <td>{{sucursal.direccion}}</td>
+      <td>{{sucursal.suc_user}}</td>
+      <td>{{sucursal.suc_pass}}</td>
+      <td>
+        <a href="#demo" class="btn btn-primary" data-bs-toggle="collapse" (click)="asignarIdSucursal(sucursal)">Actualizar</a> &nbsp;
+        <a href="#demo" class="btn btn-primary" data-bs-toggle="collapse" (click)="eliminarSucursal(sucursal.id_sucursal)">Eliminar</a> &nbsp;
+      </td>
+    </tr>
+</table>

@@ -1,0 +1,102 @@
+<p>SERVER!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Inicio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/cliente">Clientes <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/sucursal">Sucursales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/server">Servers</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+      <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+    </form>
+  </div>
+</nav>
+
+<div>
+  <h1>Crear Server</h1>
+  <div class="btn-group">
+    <input [(ngModel)]="id_nodo" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="Id Nodo">&nbsp;
+    <input [(ngModel)]="nombre_servidor" [ngModelOptions]="{standalone: true}" type="text" class="form-controlform-control"
+      placeholder="Nombre Servidor">&nbsp;
+      <input [(ngModel)]="claveservidor" [ngModelOptions]="{standalone: true}" type="text" class="form-controlform-control"
+      placeholder="Clave Servidor">&nbsp;
+      <input [(ngModel)]="ip_publica" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="Ip Pública">&nbsp;
+      <input [(ngModel)]="portwireguard" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="Port Wireguard">&nbsp;
+      <input [(ngModel)]="subred" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="Subred">&nbsp;
+      <input [(ngModel)]="dns" [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+      placeholder="DNS">&nbsp;
+      <input [(ngModel)]="ip_privada" [ngModelOptions]="{standalone: true}" type="text" class="form-controlform-control"
+      placeholder="Ip Privada">&nbsp;
+    <button (click)="crearServer()" type="button" class="btn btn-primary">
+      Ingresar <span class="caret"></span>
+    </button>
+  </div>
+</div>
+<br>
+
+
+<div class="container mt-3">
+  <div id="demo" class="collapse">
+    <input [(ngModel)]="id_nodo" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Id Nodo">
+    <input [(ngModel)]="nombre_servidor" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Nombre Servidor">
+    <input [(ngModel)]="claveservidor" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Clave Servidor">
+    <input [(ngModel)]="ip_publica" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Ip Publica">
+    <input [(ngModel)]="portwireguard" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Port Wireguard">
+    <input [(ngModel)]="subred" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Subred">
+    <input [(ngModel)]="dns" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="DNS">
+    <input [(ngModel)]="ip_privada" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Ip Privada">
+    <button (click)="actualizarServer()" type="button" class="btn btn-primary">
+      Actualizar <span class="caret"></span>
+      <br />
+    </button>
+  </div>
+</div>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>ID SERVER</th>
+      <th>ID NODO</th>
+      <th>NOMBRE SERVIDOR</th>
+      <th>CLAVE SERVIDOR</th>
+      <th>IP PUBLICA</th>
+      <th>PORT WIREGUARD</th>
+      <th>SUBRED</th>
+      <th>DNS</th>
+      <th>IP PRIVADA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let server of servers">
+      <td>{{server.id_server}}</td>
+      <td>{{server.id_nodo}}</td>
+      <td>{{server.nombre_servidor}}</td>
+      <td>{{server.claveservidor}}</td>
+      <td>{{server.ip_publica}}</td>
+      <td>{{server.portwireguard}}</td>
+      <td>{{server.subred}}</td>
+      <td>{{server.dns}}</td>
+      <td>{{server.ip_privada}}</td>
+      <td>
+        <a href="#demo" class="btn btn-primary" data-bs-toggle="collapse" (click)="asignarIdServer(server)">Actualizar</a> &nbsp;
+        <a href="#demo" class="btn btn-primary" data-bs-toggle="collapse" (click)="eliminarServer(server.id_server)">Eliminar</a> &nbsp;
+      </td>
+    </tr>
+</table>
